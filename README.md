@@ -2,17 +2,18 @@
 
 ## Contents
 
--  [Installation](#installation)
--  [DuckDNS](#dynamic-dns)
--  [Docker](#docker)
--  [Pi-hole](#pi-hole)
--  [PiVPN](#pivpn)
+- [Installation](#installation)
+- [DuckDNS](#dynamic-dns)
+- [Docker](#docker)
+- [Pi-hole](#pi-hole)
+- [PiVPN](#pivpn)
+- [Backups](#backups)
 
 ## Installation
 
-I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop, and flashed the image to a micro SD card using BalenaEtcher. I put it into the RPi and set it up with a monitor.
+I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
-#### Enabling SSH
+#### SSH access
 
 `sudo raspi-config` > Interface Options > SSH
 
@@ -38,7 +39,9 @@ This is where **DDNS** comes in - a method of automatically updating a name serv
 
 I logged in to DuckDNS with my GitHub account and created a subdomain `callista.duckdns.org`. Under the 'install' tab, I clicked 'pi' under 'Operating Systems' and followed the instructions from there.
 
-### Port Forwarding (for SSH access)
+To check if DuckDNS's cronjob is still running, check `service cron status`.
+
+### Port Forwarding (for SSH access via DuckDNS subdomain)
 
 `192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for port 22 (or any other port, really). I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
 
@@ -46,6 +49,18 @@ Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address
 
 ## Docker
 
+I followed the instructions [here](https://phoenixnap.com/kb/docker-on-raspberry-pi) to download Docker onto my RPi.
+
 ## Pi-hole
 
 ## PiVPN
+
+## Backups
+
+### Introduction
+
+I followed the instructions [here](https://magpi.raspberrypi.org/articles/back-up-raspberry-pi) which required me to download [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/). I plugged the micro SD card to my laptop and read the contents to an `.img` file. Backups are saved to a folder `/Desktop/RPi/backups`.
+
+### Records
+
+- 23/12/20 3:04PM: Initial setup, system updates, DuckDNS cronjob, Docker installation
