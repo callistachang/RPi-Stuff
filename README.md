@@ -63,4 +63,4 @@ I followed the instructions [here](https://magpi.raspberrypi.org/articles/back-u
 
 ### Records
 
-- 23/12/20 3:04PM: Initial setup, system updates, DuckDNS cronjob, Docker installation
+- 23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation
