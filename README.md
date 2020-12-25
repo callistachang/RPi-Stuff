@@ -8,11 +8,12 @@
 - [Docker](#docker)
 - [Pi-hole](#pi-hole)
 - [PiVPN](#pivpn)
+- [Copying files via SCP](#scp)
 - [Backups](#backups)
 
 ## Installation
 
-I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
+I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop released on 2nd Dec 2020, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
 #### Enabling SSH
 
@@ -26,9 +27,22 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 
 ## Vim
 
+### Introduction
+
+Vim is my main text editor for Linux systems. 
+
 ```
 sudo apt install vim
 ```
+
+#### My .vimrc settings
+
+These are my [.vimrc settings](.vimrc). 
+
+#### Package manager
+
+I use Vundle as my Vim package manager, and downloaded it using the quickstart instructions [here](https://github.com/VundleVim/Vundle.vim). To download a new package, I run the command `:PluginInstall`.
+
 
 ## Dynamic DNS
 
@@ -63,6 +77,15 @@ I followed the instructions [here](https://phoenixnap.com/kb/docker-on-raspberry
 ## Pi-hole
 
 ## PiVPN
+
+## SCP
+
+Secure File Copy is used to copy files back and forth between my RPi and desktop. The format for SCP is `scp <from> <to>`, which I executed via the WSL command line. 
+
+```
+// Copying my .vimrc file from my RPi to my Desktop
+scp pi@callista.duckdns.org:~/.vimrc ./Desktop
+```
 
 ## Backups
 
