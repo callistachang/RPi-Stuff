@@ -79,7 +79,20 @@ Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address
 
 I followed the instructions [here](https://phoenixnap.com/kb/docker-on-raspberry-pi) to download Docker onto my RPi.
 
+### Docker Compose
+
 And [here](https://sanderh.dev/setup-Docker-and-Docker-Compose-on-Raspberry-Pi/) for downloading Docker Compose.
+
+```
+# Runs a docker-compose.yml file in the background
+docker-compose up --detach
+
+# Checks on the running containers
+docker-compose ps
+
+# Kills the running container
+docker-compose kill
+```
 
 ## Pi-hole
 
