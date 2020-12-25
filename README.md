@@ -3,6 +3,7 @@
 ## Contents
 
 - [Installation](#installation)
+- [Vim](#vim)
 - [DuckDNS](#dynamic-dns)
 - [Docker](#docker)
 - [Pi-hole](#pi-hole)
@@ -13,13 +14,21 @@
 
 I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
-#### SSH access
+#### Enabling SSH
 
-`sudo raspi-config` > Interface Options > SSH
+`sudo raspi-config` > Interface Options > SSH > Enable SSH
 
 #### System updates
 
-Before doing anything, I ran `sudo apt-get update -y && sudo apt-get upgrade -y` on the terminal.
+```
+sudo apt-get update -y && sudo apt-get upgrade -y
+```
+
+## Vim
+
+```
+sudo apt install vim
+```
 
 ## Dynamic DNS
 
@@ -43,7 +52,7 @@ To check if DuckDNS's cronjob is still running, check `service cron status`.
 
 ### Port Forwarding (for SSH access via DuckDNS subdomain)
 
-`192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for port 22 (or any other port, really). I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
+For my router, it is `192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for port 22 (or any other port, really). I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
 
 Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address.
 
