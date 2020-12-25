@@ -2,7 +2,8 @@
 
 ## Contents
 
-- [Installation](#installation)
+- [Model](#hardware-model)
+- [Installation](#software-installation)
 - [Vim](#vim)
 - [DuckDNS](#dynamic-dns)
 - [Docker](#docker)
@@ -11,7 +12,11 @@
 - [Copying files via SCP](#scp)
 - [Backups](#backups)
 
-## Installation
+## Hardware Model
+
+I have the Raspberry Pi 4 Model B Rev 1.2.
+
+## Software Installation
 
 I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop released on 2nd Dec 2020, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
