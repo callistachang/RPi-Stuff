@@ -61,7 +61,7 @@ This is where **DDNS** comes in - a method of automatically updating a name serv
 
 ### DuckDNS
 
-**[DuckDNS](https://www.duckdns.org/)** provides a public DNS server that anyone can get a subdomain and use their scripts to update their records. Via a cron job, the RPi would send a HTTPS post to DuckDNS's central system to update it with its latest external IP.
+[DuckDNS](https://www.duckdns.org/) provides a public DNS server that anyone can get a subdomain and use their scripts to update their records. Via a cron job, the RPi would send a HTTPS post to DuckDNS's central system to update it with its latest external IP.
 
 #### Instructions
 
@@ -90,7 +90,7 @@ And [here](https://sanderh.dev/setup-Docker-and-Docker-Compose-on-Raspberry-Pi/)
 Secure File Copy is used to copy files back and forth between my RPi and desktop. The format for SCP is `scp <from> <to>`, which I executed via the WSL command line. 
 
 ```
-// Copying my .vimrc file from my RPi to my Desktop
+# Copying my .vimrc file from my RPi to my Desktop
 scp pi@callista.duckdns.org:~/.vimrc ./Desktop
 ```
 
