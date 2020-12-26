@@ -92,6 +92,8 @@ Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address
 
 ## Nginx
 
+*maybe I won't use NGINX because wtf is happening*
+
 ```
 sudo apt install nginx
 sudo service nginx start  # start the server
@@ -140,3 +142,4 @@ I followed the instructions [here](https://magpi.raspberrypi.org/articles/back-u
 ### Records
 
 - 23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation
+- 27/12/20 12:36 AM: Downloaded vim, included .vimrc settings, downloaded Vundle and ran PluginInstall (for both root and pi), changed hostname and password
