@@ -1,4 +1,4 @@
-# RPi-Stuff
+# RPi Config
 
 ## Contents
 
@@ -6,6 +6,7 @@
 - [Installation](#software-installation)
 - [Vim](#vim)
 - [DuckDNS](#dynamic-dns)
+- [Nginx](#nginx)
 - [Docker](#docker)
 - [Pi-hole](#pi-hole)
 - [PiVPN](#pivpn)
@@ -46,8 +47,22 @@ These are my [.vimrc settings](.vimrc).
 
 #### Package manager
 
-I use Vundle as my Vim package manager, and downloaded it using the quickstart instructions [here](https://github.com/VundleVim/Vundle.vim). To download a new package, I run the command `:PluginInstall`.
+I use Vundle as my Vim package manager.
 
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+I followed the quickstart instructions [here](https://github.com/VundleVim/Vundle.vim). To download a new package, I run the command `:PluginInstall`.
+
+#### Sudo vim
+
+To enable my .vimrc settings whenever I'm on sudo, I had to copy over my settings and download Vundle again.
+
+```
+sudo cp ~/.vimrc /root/.vimrc
+sudo git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
+```
 
 ## Dynamic DNS
 
@@ -74,6 +89,15 @@ To check if DuckDNS's cronjob is still running, check `service cron status`.
 For my router, it is `192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for port 22 (or any other port, really). I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
 
 Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address.
+
+## Nginx
+
+```
+sudo apt install nginx
+sudo service nginx start  # start the server
+sudo service nginx status  # check how the server is doing
+vim /etc/nginx/sites-available/default  # edit the nginx configuration
+```
 
 ## Docker
 
