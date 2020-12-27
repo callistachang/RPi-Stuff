@@ -5,7 +5,7 @@
 - [Model](#hardware-model)
 - [Installation](#software-installation)
 - [Vim](#vim)
-- [Cron jobs](#cron-jobs)
+- [Cron jobs](#crontab)
 - [DuckDNS](#dynamic-dns)
 - [Nginx](#nginx)
 - [Docker](#docker)
@@ -65,7 +65,7 @@ sudo cp ~/.vimrc /root/.vimrc
 sudo git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
 ```
 
-## Cron jobs
+## Crontab
 
 These are my [crontab settings](crontab). [cron.guru](https://crontab.guru/) is a super useful site to know how to write cron jobs the way you want it.
 
