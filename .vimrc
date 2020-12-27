@@ -4,7 +4,7 @@ runtime! debian.vim
 " Vundle package manager and downloaded plugins
 " To download new plugins, type :PluginInstall
 """""""""""""""""""""""""
-
+		
 " Turn filetype detection off to be safe when using Vundle
 filetype off
 
@@ -59,9 +59,6 @@ set encoding=utf-8
 set title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 
-" Enable indentation rules and plugins according to the detected filetype
-filetype plugin indent on
-
 " Show matching brackets
 set showmatch
 
@@ -87,6 +84,28 @@ colorscheme gruvbox
 
 set laststatus=2
 set noshowmode
+
+"""""""""""""""""""""""""
+" Indentation
+"""""""""""""""""""""""""
+
+" Enable indentation rules and plugins according to the detected filetype
+filetype plugin indent on
+
+" Amount of whitespace to be added in Normal mode (>>)
+set shiftwidth=2
+
+" Width of tab character
+set tabstop=4
+
+" Finetuning of the amount of whitespace to be added
+set softtabstop=4
+
+" Use spaces instead of tabs
+set expandtab
+
+" Applies the indentation of the current line to the next
+set autoindent
 
 """""""""""""""""""""""""
 " Search
