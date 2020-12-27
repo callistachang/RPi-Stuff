@@ -7,7 +7,7 @@
 - [Vim](#vim)
 - [Cron jobs](#crontab)
 - [DuckDNS](#dynamic-dns)
-- [Nginx](#nginx)
+- ~~[Nginx](#nginx)~~
 - [Docker](#docker)
 - [Pi-hole](#pi-hole)
 - [PiVPN](#pivpn)
@@ -102,7 +102,7 @@ For my router, it is `192.168.3.1` on the browser > Settings > 安全设置 > NA
 
 Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address.
 
-## Nginx
+## ~~Nginx~~
 
 *maybe I won't use NGINX because wtf is happening*
 
@@ -121,6 +121,8 @@ I followed the instructions [here](https://phoenixnap.com/kb/docker-on-raspberry
 
 And [here](https://sanderh.dev/setup-Docker-and-Docker-Compose-on-Raspberry-Pi/) for downloading Docker Compose.
 
+These are the usual commands:
+
 ```
 # Runs a docker-compose.yml file in the background
 docker-compose up --detach
@@ -133,6 +135,14 @@ docker-compose kill
 ```
 
 ## Pi-hole
+
+I downloaded Pi-hole the usual way: run `curl -sSL https://install.pi-hole.net | bash` and answered everything as recommended. I chose Cloudflare as my main DNS server.
+
+Then, on my router, I went to 我要上网 > 静态 DNS > set my RPi's IP address as the primary DNS > set what was initially the primary DNS address to the secondary DNS slot.
+ 
+I added the [light OISD blocklist](https://dbl.oisd.nl/light/), and followed instructions via this [Reddit post](https://www.reddit.com/r/pihole/comments/g9ytt9/youtube_some_success_ymmv_please_test/) and [Git repository](https://gitlab.com/grublets/youtube-updater-for-pi-hole) in order to minimize YouTube ads. I added a cron job to update the blocklist via editing my cronjob file (`crontab -e`).
+
+*AAAAAHHHHH THIS TOOK BLOODY LONG TO GET RIGHT SO I'M REALLY HAPPY*
 
 ## PiVPN
 
