@@ -72,7 +72,7 @@ These are my [crontab settings](crontab). I used [cron.guru](https://crontab.gur
 ```
 # edit cron jobs
 crontab -e
-# check up on your cron job bbys
+# check up on your cron babies
 sudo service cron [start|stop|restart|status]
 ```
 
@@ -139,8 +139,12 @@ docker-compose kill
 I downloaded Pi-hole the usual way: run `curl -sSL https://install.pi-hole.net | bash` and answered everything as recommended. I chose Cloudflare as my main DNS server.
 
 Then, on my router, I went to 我要上网 > 静态 DNS > set my RPi's IP address as the primary DNS > set what was initially the primary DNS address to the secondary DNS slot.
- 
-I added the [light OISD blocklist](https://dbl.oisd.nl/light/), and followed instructions via this [Reddit post](https://www.reddit.com/r/pihole/comments/g9ytt9/youtube_some_success_ymmv_please_test/) and [Git repository](https://gitlab.com/grublets/youtube-updater-for-pi-hole) in order to minimize YouTube ads. I added a cron job to update the blocklist via editing my cronjob file (`crontab -e`).
+
+I followed the instructions in this [Reddit post](https://www.reddit.com/r/pihole/comments/kla6ci/replacement_for_malwaredomains_list/gh8g27c?utm_source=share&utm_medium=web2x&context=3), where I downloaded [Wally3k's](https://firebog.net/) and [Developer Dan's](https://www.github.developerdan.com/hosts/) adlists, and [mmotti's regex list](https://github.com/mmotti/pihole-regex). I'll be trying [yubiuser's tool](https://github.com/yubiuser/pihole_adlist_tool) out to audit which lists are actually being used.
+
+I also used [anudeepND's whitelist](https://github.com/anudeepND/whitelist).
+
+Finally, I followed instructions via [Reddit post](https://www.reddit.com/r/pihole/comments/g9ytt9/youtube_some_success_ymmv_please_test/) and [Git repository](https://gitlab.com/grublets/youtube-updater-for-pi-hole) in order to minimize YouTube ads. I added a cron job to update the blocklist via editing my crontab file.
 
 *AAAAAHHHHH THIS TOOK BLOODY LONG TO GET RIGHT SO I'M REALLY HAPPY*
 
