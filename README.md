@@ -67,7 +67,7 @@ sudo git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vun
 
 ## Crontab
 
-These are my [crontab settings](crontab). [cron.guru](https://crontab.guru/) is a super useful site to know how to write cron jobs the way you want it.
+These are my [crontab settings](crontab). I used [cron.guru](https://crontab.guru/), a super useful site to know how to write cron jobs the way you want it.
 
 ```
 # edit cron jobs
