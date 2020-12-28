@@ -5,12 +5,12 @@
 - [Model](#hardware-model)
 - [Installation](#software-installation)
 - [Vim](#vim)
-- [Cron jobs](#crontab)
+- [Crontab](#crontab)
 - [DuckDNS](#dynamic-dns)
 - ~~[Nginx](#nginx)~~
-- [Docker](#docker)
+- [Docker](#docker) - not using it for anything yet
 - [Pi-hole](#pi-hole)
-- [PiVPN](#pivpn)
+- [PiVPN](#pivpn) - not implemented yet
 - [Copying files via SCP](#scp)
 - [Backups](#backups)
 
@@ -167,5 +167,6 @@ I followed the instructions [here](https://magpi.raspberrypi.org/articles/back-u
 
 ### Records
 
-- 23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation
+- ~~23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation~~
 - 27/12/20 12:36 AM: Downloaded vim, included .vimrc settings, downloaded Vundle and ran PluginInstall (for both root and pi), changed hostname and password
+- 28/12/20 1:22 PM: I GOT [PI-HOLE](#pi-hole) WORKING
