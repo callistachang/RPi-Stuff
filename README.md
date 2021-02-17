@@ -150,6 +150,8 @@ Finally, I followed instructions via [Reddit post](https://www.reddit.com/r/piho
 
 ## PiVPN
 
+Holy shit. After a bunch of CRAP, PLEASE, port forward the UDP port and not the TCP port! I'm mad.
+
 ## SCP
 
 Secure File Copy is used to copy files back and forth between my RPi and desktop. The format for SCP is `scp <from> <to>`, which I executed via the WSL command line. 
