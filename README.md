@@ -161,6 +161,9 @@ Secure File Copy is used to copy files back and forth between my RPi and desktop
 scp pi@callista.duckdns.org:~/.vimrc ./Desktop
 ```
 
+## Clear Cache
+`sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"`
+
 ## Backups
 
 ### Introduction
