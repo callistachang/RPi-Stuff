@@ -22,6 +22,31 @@ I have the Raspberry Pi 4 Model B Rev 1.2.
 
 I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop released on 2nd Dec 2020, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
+#### What if u don't have a monitor
+
+After flashing the image, add a file `wpa_supplicant.conf`:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=<Insert 2 letter ISO 3166-1 country code here>
+
+network={
+        scan_ssid=1
+        ssid="<Name of your wireless LAN>"
+        psk="<Password for your wireless LAN>"
+        proto=RSN
+        key_mgmt=WPA-PSK
+        pairwise=CCMP
+        auth_alg=OPEN
+}
+```
+
+and an empty file `ssh` to the root dir.
+
+Assuming the rpi is connected to the computer you are trying to ssh from, ssh using `ssh pi@raspberry.local` and input the password as `raspberry`. Then change your password from then on.
+
+
 #### Enabling SSH
 
 `sudo raspi-config` > Interface Options > SSH > Enable SSH
