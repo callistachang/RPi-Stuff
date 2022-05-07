@@ -1,7 +1,8 @@
-# update my dynamic DNS provider every 10 minutes 
-*/10 * * * * ~/duckdns/duck.sh >/dev/null 2>&1
+# update my dynamic DNS provider every 5 minutes 
+*/5 * * * * ~/duckdns/duck.sh >/dev/null 2>&1
 
-# update my youtube adblock list every 10 minutes
-*/10 * * * * cd ~/youtube-updater-for-pi-hole && sudo ./youtube.update.sh >/dev/null 2>&1 
+# update my youtube adblock list every 5 minutes
+*/5 * * * * ./usr/local/bin/youtube.update.sh
 
-# adding >/dev/null 2>&1 so as to not log the output of the scripts
+# clear cache every 5 minutes
+*/5 * * * * sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"

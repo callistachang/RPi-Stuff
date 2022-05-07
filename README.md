@@ -7,10 +7,10 @@
 - [Vim](#vim)
 - [Crontab](#crontab)
 - [DuckDNS](#dynamic-dns)
-- ~~[Nginx](#nginx)~~
-- [Docker](#docker) - not using it for anything yet
+- [Nginx](#nginx)
+- [Docker](#docker)
 - [Pi-hole](#pi-hole)
-- [PiVPN](#pivpn) - not implemented yet
+- [PiVPN](#pivpn)
 - [Copying files via SCP](#scp)
 - [Backups](#backups)
 
@@ -22,7 +22,7 @@ I have the Raspberry Pi 4 Model B Rev 1.2.
 
 I downloaded [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop released on 2nd Dec 2020, and flashed the image to a micro SD card using BalenaEtcher. Then, I set it up with a monitor.
 
-#### What if u don't have a monitor
+#### what if u don't have a monitor and you want to connect to wifi!
 
 After flashing the image, add a file `wpa_supplicant.conf`:
 
@@ -32,20 +32,19 @@ update_config=1
 country=<Insert 2 letter ISO 3166-1 country code here>
 
 network={
-        scan_ssid=1
-        ssid="<Name of your wireless LAN>"
-        psk="<Password for your wireless LAN>"
-        proto=RSN
-        key_mgmt=WPA-PSK
-        pairwise=CCMP
-        auth_alg=OPEN
+    scan_ssid=1
+    ssid="<Name of your wireless LAN>"
+    psk="<Password for your wireless LAN>"
+    proto=RSN
+    key_mgmt=WPA-PSK
+    pairwise=CCMP
+    auth_alg=OPEN
 }
 ```
 
 and an empty file `ssh` to the root dir.
 
-Assuming the rpi is connected to the computer you are trying to ssh from, ssh using `ssh pi@raspberry.local` and input the password as `raspberry`. Then change your password from then on.
-
+Assuming the RPi is connected to the computer (e.g. via USB) you are trying to ssh from, ssh using `ssh pi@raspberry.local` and input the password as `raspberry`. Then change your password from then on.
 
 #### Enabling SSH
 
@@ -59,9 +58,11 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 
 ## Vim
 
+> :warning: This part is outdated. Please refer to my [dotfiles](https://github.com/callistachang/dotfiles) for my latest setup! :warning:
+
 ### Introduction
 
-Vim is my main text editor for Linux systems. 
+Vim is my main text editor for Linux systems.
 
 ```
 sudo apt install vim
@@ -69,7 +70,7 @@ sudo apt install vim
 
 #### My .vimrc settings
 
-These are my [.vimrc settings](.vimrc). 
+These are my [.vimrc settings](.vimrc).
 
 #### Package manager
 
@@ -92,7 +93,7 @@ sudo git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vun
 
 ## Crontab
 
-These are my [crontab settings](crontab). I used [cron.guru](https://crontab.guru/), a super useful site to know how to write cron jobs the way you want it.
+These are my [crontab settings](crontab). I used [cron.guru](https://crontab.guru/), it's a useful site to know how to write cron jobs the way you want it.
 
 ```
 # edit cron jobs
@@ -105,11 +106,11 @@ sudo service cron [start|stop|restart|status]
 
 ### Introduction
 
-A **dynamic IP address** is an IP address that changes from time to time (unlike a static IP address). 
+A **dynamic IP address** is an IP address that changes from time to time (unlike a static IP address).
 
 Most home networks have a dynamic IP address, because it allows internet service providers (ISPs) to recycle them, making it more cost-effective. This is done via a protocol called the Dynamic Host Configuration Protocol (DHCP). Your home network's IP address gets pulled from a pool of addresses and then assigned by your ISP. After a period of time, that IP address is put back into the pool and you are assigned a new IP address.
 
-This is where **DDNS** comes in - a method of automatically updating a name server in the DNS. 
+This is where **DDNS** comes in - a method of automatically updating a name server in the DNS.
 
 ### DuckDNS
 
@@ -117,19 +118,17 @@ This is where **DDNS** comes in - a method of automatically updating a name serv
 
 #### Instructions
 
-I logged in to DuckDNS with my GitHub account and created a subdomain `callista.duckdns.org`. Under the 'install' tab, I clicked 'pi' under 'Operating Systems' and followed the instructions from there.
+I logged in to DuckDNS with my GitHub account and created a subdomain `XXX.duckdns.org`. Under the 'install' tab, I clicked 'pi' under 'Operating Systems' and followed the instructions from there.
 
 To check if DuckDNS's cronjob is still running, check `service cron status`.
 
 ### Port Forwarding (for SSH access via DuckDNS subdomain)
 
-For my router, it is `192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for port 22 (or any other port, really). I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
+For my router, it is `192.168.3.1` on the browser > Settings > 安全设置 > NAT 服务 > 端口映射. There, I can set up port forwarding for all the ports I need to. I found my router's address by typing `ipconfig` on the command prompt and finding out the Default Gateway address.
 
-Now, I can SSH to my RPi via PuTTY, with `callista.duckdns.org` as my IP address.
+## Nginx
 
-## ~~Nginx~~
-
-*maybe I won't use NGINX because wtf is happening*
+### Installation
 
 ```
 sudo apt install nginx
@@ -139,6 +138,8 @@ vim /etc/nginx/sites-available/default  # edit the nginx configuration
 ```
 
 ## Docker
+
+> :warning: I'm no longer downloading Docker because my RPi is too weak to handle that. :warning:
 
 I followed the instructions [here](https://phoenixnap.com/kb/docker-on-raspberry-pi) to download Docker onto my RPi.
 
@@ -163,23 +164,25 @@ docker-compose kill
 
 I downloaded Pi-hole the usual way: run `curl -sSL https://install.pi-hole.net | bash` and answered everything as recommended. I chose Cloudflare as my main DNS server.
 
-Then, on my router, I went to 我要上网 > 静态 DNS > set my RPi's IP address as the primary DNS > set what was initially the primary DNS address to the secondary DNS slot.
+Then, on my router (it's a Huawei router), I went to 我要上网 > 静态 DNS > set my RPi's IP address as the primary DNS > set what was initially the primary DNS address to the secondary DNS slot.
 
-I followed the instructions in this [Reddit post](https://www.reddit.com/r/pihole/comments/kla6ci/replacement_for_malwaredomains_list/gh8g27c?utm_source=share&utm_medium=web2x&context=3), where I downloaded [Wally3k's](https://firebog.net/) and [Developer Dan's](https://www.github.developerdan.com/hosts/) adlists, and [mmotti's regex list](https://github.com/mmotti/pihole-regex). I'll be trying [yubiuser's tool](https://github.com/yubiuser/pihole_adlist_tool) out to audit which lists are actually being used.
+I followed the instructions here, where I downloaded [Wally3k's](https://firebog.net/) and [Developer Dan's](https://www.github.developerdan.com/hosts/) adlists, and [mmotti's regex list](https://github.com/mmotti/pihole-regex). I'll be trying [yubiuser's tool](https://github.com/yubiuser/pihole_adlist_tool) out to audit which lists are actually being used.
 
 I also used [anudeepND's whitelist](https://github.com/anudeepND/whitelist).
 
 Finally, I followed instructions via [Reddit post](https://www.reddit.com/r/pihole/comments/g9ytt9/youtube_some_success_ymmv_please_test/) and [Git repository](https://gitlab.com/grublets/youtube-updater-for-pi-hole) in order to minimize YouTube ads. I added a cron job to update the blocklist via editing my crontab file.
 
-*AAAAAHHHHH THIS TOOK BLOODY LONG TO GET RIGHT SO I'M REALLY HAPPY*
-
 ## PiVPN
 
-Holy shit. After a bunch of CRAP, PLEASE, port forward the UDP port and not the TCP port! I'm mad.
+`curl -L https://install.pivpn.io | bash`
+
+Port forward the UDP port, not the TCP port.
 
 ## SCP
 
-Secure File Copy is used to copy files back and forth between my RPi and desktop. The format for SCP is `scp <from> <to>`, which I executed via the WSL command line. 
+> Update: You can just use VSCode's remote server extension to drop files in and out.
+
+Secure File Copy is used to copy files back and forth between my RPi and desktop. The format for SCP is `scp <from> <to>`, which I executed via the WSL command line.
 
 ```
 # Copying my .vimrc file from my RPi to my Desktop
@@ -187,6 +190,7 @@ scp pi@callista.duckdns.org:~/.vimrc ./Desktop
 ```
 
 ## Clear Cache
+
 `sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"`
 
 ## Backups
@@ -197,6 +201,7 @@ I followed the instructions [here](https://magpi.raspberrypi.org/articles/back-u
 
 ### Records
 
-- ~~23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation~~
+- 23/12/20 3:04PM: Initial setup, system updates, SSH access on raspi-config, DuckDNS cronjob, Docker installation
 - 27/12/20 12:36 AM: Downloaded vim, included .vimrc settings, downloaded Vundle and ran PluginInstall (for both root and pi), changed hostname and password
-- 28/12/20 1:22 PM: I GOT [PI-HOLE](#pi-hole) WORKING
+- 28/12/20 1:22 PM: GOT [PI-HOLE](#pi-hole) WORKING
+- 5/7/22 10:11 AM: Oh, wow, it's been a while! I now run Pi-hole, PiVPN, Netdata and Codeserver on my RPi. It's mostly for the Pi-hole, really. As for my .vimrc, it's outdated, I now use Neovim and [these are my configs](https://github.com/callistachang/dotfiles).
